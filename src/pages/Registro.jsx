@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Layout from "../components/Layout";
 
 function Registro() {
     const [nombre, setNombre] = useState("");
@@ -12,7 +13,11 @@ function Registro() {
     const registrar = (e) => {
         e.preventDefault();
 
-        if (nombre.trim() === "" || correo.trim() === "" || tipo === "") {
+        if (
+            nombre.trim() === "" ||
+            correo.trim() === "" ||
+            tipo === ""
+        ) {
             setError("Todos los campos son obligatorios");
             return;
         }
@@ -41,17 +46,20 @@ function Registro() {
     };
 
     return (
-        <div>
+        <Layout>
             <h2>Registro de Creador</h2>
 
             <form onSubmit={registrar}>
+
                 <div>
                     <label>Nombre</label>
                     <br />
                     <input
                         type="text"
                         value={nombre}
-                        onChange={(e) => setNombre(e.target.value)}
+                        onChange={(e) =>
+                            setNombre(e.target.value)
+                        }
                     />
                 </div>
 
@@ -63,7 +71,9 @@ function Registro() {
                     <input
                         type="email"
                         value={correo}
-                        onChange={(e) => setCorreo(e.target.value)}
+                        onChange={(e) =>
+                            setCorreo(e.target.value)
+                        }
                     />
                 </div>
 
@@ -74,7 +84,9 @@ function Registro() {
                     <br />
                     <select
                         value={tipo}
-                        onChange={(e) => setTipo(e.target.value)}
+                        onChange={(e) =>
+                            setTipo(e.target.value)
+                        }
                     >
                         <option value="">
                             Seleccione una opción
@@ -109,8 +121,9 @@ function Registro() {
                 <button type="submit">
                     Registrarse
                 </button>
+
             </form>
-        </div>
+        </Layout>
     );
 }
 
